@@ -18,4 +18,8 @@ package com.wangming.utils;
  */
 public class StringUtils {
 
+	public static boolean isBlank(String str){
+		return null == str || str.trim().length() <= 0;
+	}
+	
 }
