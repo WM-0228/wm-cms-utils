@@ -10,6 +10,8 @@
  */
 package com.wangming.utils;
 
+import java.util.regex.Pattern;
+
 /** 
  * @ClassName: StringUtils 
  * @Description: TODO
@@ -18,8 +20,28 @@ package com.wangming.utils;
  */
 public class StringUtils {
 
+	/**
+	 * 
+	 * @Title: isBlank 
+	 * @Description: ÅÐ¶Ï×Ö·û´®ÊÇ·ñÎª¿Õ
+	 * @param str
+	 * @return
+	 * @return: boolean
+	 */
 	public static boolean isBlank(String str){
 		return null == str || str.trim().length() <= 0;
+	}
+	
+	/**
+	 * 
+	 * @Title: haveValue 
+	 * @Description: ÅÐ¶Ï×Ö·û´®ÊÇ·ñ·Ç¿Õ
+	 * @param str
+	 * @return
+	 * @return: boolean
+	 */
+	public static boolean haveValue(String str){
+		return !(null == str || str.trim().length() <= 0);
 	}
 	
 }
