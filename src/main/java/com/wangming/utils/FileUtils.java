@@ -54,7 +54,15 @@ public class FileUtils {
 	}
 	
 	
-
+	/**
+	 * 
+	 * @Title: readFile 
+	 * @Description: 读取内容返回字符串集合
+	 * @param fileName
+	 * @return
+	 * @throws IOException
+	 * @return: List<String>
+	 */
 	public static List<String> readFile(String fileName) throws IOException{
 		List<String> lines =  new ArrayList<String>();
 		
