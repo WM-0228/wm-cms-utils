@@ -86,7 +86,15 @@ public class getAgeOrDateUtils {
 	 * @return: boolean
 	 */
 	public static boolean isNowDay(Date date){
-		return true;
+
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+		// 获取日期的字符串
+		String dateStr = sdf.format(date);
+
+		// 获取日期的字符串
+		String todayStr = sdf.format(new Date());
+
+		return (dateStr.equals(todayStr));
 	}
 	
 	/**
@@ -155,4 +163,43 @@ public class getAgeOrDateUtils {
 
 	}
 
+	/**
+	 * 
+	 * @Title: initDate 
+	 * @Description: 3.4.7给定时间对象，初始化到该月初的1日0时0分0秒0毫秒
+	 * @param date
+	 * @return
+	 * @return: Date
+	 */
+	public static Date initDate(Date date){
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(date);
+		
+		calendar.set(Calendar.DAY_OF_MONTH, 1);
+		calendar.set(Calendar.HOUR, 0);
+		calendar.set(Calendar.MINUTE, 0);
+		calendar.set(Calendar.SECOND, 0);
+
+		return calendar.getTime();
+	}
+	
+	
+	/*
+	* 方法2：(10分)
+	* 给任意一个时间对象，返回该时间所在月的最后日23时59分59秒，需要考虑月大月小和二月特殊情况。
+	* 例如一个Date对象的值是2019-05-18 11:37:22，则返回的时间为2019-05-31 23:59:59
+	* 例如一个Date对象的值是2019-02-05 15:42:18，则返回的时间为2019-02-28 23:59:59
+	*/
+	public static Date getDateByFullMonth(Date src){
+	//TODO 实现代码
+		Calendar c =  Calendar.getInstance();
+		c.setTime(src);
+		c.add(Calendar.MONTH, 1);
+		c.set(Calendar.DAY_OF_MONTH, 1);
+		c.set(Calendar.HOUR, 0);
+		c.set(Calendar.MINUTE, 0);
+		c.set(Calendar.SECOND, 0);
+		c.add(Calendar.SECOND, -1);
+		return c.getTime();
+	}
 }
