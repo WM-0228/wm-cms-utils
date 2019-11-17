@@ -5,25 +5,27 @@
  * @Package: com.wangming.utils 
  * @Description: TODO
  * @author: WM  
- * @date: 2019Äê11ÔÂ7ÈÕ ÏÂÎç3:58:33 
+ * @date: 2019ï¿½ï¿½11ï¿½ï¿½7ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½3:58:33 
  * @version: V1.0   
  */
 package com.wangming.utils;
 
+import java.sql.Date;
+import java.util.Calendar;
 import java.util.Random;
 
 /** 
  * @ClassName: Randomletter 
  * @Description: TODO
  * @author:WM 
- * @date: 2019Äê11ÔÂ7ÈÕ ÏÂÎç3:58:33  
+ * @date: 2019ï¿½ï¿½11ï¿½ï¿½7ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½3:58:33  
  */
 public class RandomLetter {
 
 	/**
 	 * 
 	 * @Title: randomletter 
-	 * @Description: Ö¸¶¨´ÎÊıµÄËæ»ú×éºÏ×Ö·û´®
+	 * @Description: Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½
 	 * @param n
 	 * @return
 	 * @return: String
@@ -42,7 +44,7 @@ public class RandomLetter {
 	/**
 	 * 
 	 * @Title: RandomChina 
-	 * @Description: »ñÈ¡Ëæ»úÖĞÎÄ
+	 * @Description: ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * @return
 	 * @return: char
 	 */
@@ -63,7 +65,7 @@ public class RandomLetter {
             str = new String(b, "GBK");
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("´íÎó");
+            System.out.println("ï¿½ï¿½ï¿½ï¿½");
         }
 
         	return str.charAt(0);
@@ -72,7 +74,7 @@ public class RandomLetter {
 	/**
 	 * 
 	 * @Title: RandomChina 
-	 * @Description: Ö¸¶¨Ëæ»ú´ÎÊıµÄºº×Ö
+	 * @Description: Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Äºï¿½ï¿½ï¿½
 	 * @param n
 	 * @return
 	 * @return: String
@@ -84,6 +86,62 @@ public class RandomLetter {
 		}
 		return sb.toString();
 	}
+	
+	public static String RandomName(){
+		int a = (int) (Math.random() * 10);
+		return new RandomLetter().RandomChina((a >= 4 ? 3 : (a == 0 ? 2 : a)));
+	}
+	
+	public static String randomChineseString(){
+		Random ran = new Random();
+		int nextInt = ran.nextInt(20)+20;
+		return RandomChina(nextInt);
+	}
+	
+	public static int RandomUtil(){
+		Random ran = new Random();
+		return	(100000 + (ran.nextInt(99990000) * 10));
+	}
+	
+	public static String RandomUtil(String num){
+		return	num + 1000 + (int)(Math.random() * 10000000);
+	}
+	
+	public static int RandomNum(){
+		Random ran = new Random();
+		int [] arr = {1,2,3,4,5,6,7,8,9,10,11};
+		return	ran.nextInt(arr.length);
+	}
+	
+	public static Date randomHireday1() {
+		int startYear=1950;
+		int endYear=2019;
+		int year = (int)(Math.random()*(endYear-startYear+1))+startYear;	//éšæœºå¹´
+		int month= (int)(Math.random()*12)+1;								//éšæœºæœˆ
+		Calendar c = Calendar.getInstance();				//åˆ›å»ºCalendarå¯¹è±¡
+		c.set(year, month, 0);								//è®¾å®šæ—¥æœŸ
+		int dayOfMonth = c.get(Calendar.DAY_OF_MONTH);		//è·å–å¯¹åº”å¹´æœˆæœ‰å‡ å¤©
+		int day=(int)(Math.random()*dayOfMonth+1)	;		//äº§ç”Ÿéšæœºæ—¥
+		Date hireday=Date.valueOf(year+"-"+month+"-"+day);	//é€šè¿‡valueOfæ–¹æ³•ç”ŸæˆDateå¯¹è±¡
+		return hireday;
+	}
+	
+	public static Date randomHireday2() {
+		int startYear=1950;
+		int endYear=2019;
+		int year = (int)(Math.random()*(endYear-startYear+1))+startYear;	//éšæœºå¹´
+		int month= (int)(Math.random()*12)+1;								//éšæœºæœˆ
+		Calendar c = Calendar.getInstance();				//åˆ›å»ºCalendarå¯¹è±¡
+		c.set(year, month, 0);								//è®¾å®šæ—¥æœŸ
+		int dayOfMonth = c.get(Calendar.DAY_OF_MONTH);		//è·å–å¯¹åº”å¹´æœˆæœ‰å‡ å¤©
+		int day=(int)(Math.random()*dayOfMonth+1)	;		//äº§ç”Ÿéšæœºæ—¥
+		Date hireday=Date.valueOf(year+"-"+month+"-"+day);	//é€šè¿‡valueOfæ–¹æ³•ç”ŸæˆDateå¯¹è±¡
+		c.setTime(hireday);
+		c.add(Calendar.YEAR, 50);
+		java.util.Date time = c.getTime();
+		return new Date(time.getTime()) ;
+	}
+	
 	
 	/*public static void main(String[] args) {
 		String randomChina = RandomLetter.RandomChina(5);

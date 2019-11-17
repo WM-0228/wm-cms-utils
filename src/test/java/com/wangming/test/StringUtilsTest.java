@@ -25,9 +25,10 @@ import com.wangming.utils.StringUtils;
  */
 public class StringUtilsTest {
 
-	@Test
+	/*@Test
 	public void stringUtilsTest(){
 		//╤оят false true
 		assertFalse(StringUtils.isBlank("  ASA     "));
-	}
+	}*/
+
 }
