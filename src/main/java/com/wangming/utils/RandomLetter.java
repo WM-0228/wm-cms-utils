@@ -87,7 +87,7 @@ public class RandomLetter {
 		return sb.toString();
 	}
 	
-	public static String RandomName(){
+	public static String generateChineseName(){
 		int a = (int) (Math.random() * 10);
 		return new RandomLetter().RandomChina((a >= 4 ? 3 : (a == 0 ? 2 : a)));
 	}
@@ -101,6 +101,14 @@ public class RandomLetter {
 	public static int RandomUtil(){
 		Random ran = new Random();
 		return	(100000 + (ran.nextInt(99990000) * 10));
+	}
+	
+	public static String randomChineseString(String str){
+		String [] arr = {"有限公司","股份有限公司","集团有限公司"};
+		Random ran = new Random();
+		int nextInt = ran.nextInt(2)+2;
+		String randomChina = RandomChina(nextInt);
+		return str+randomChina+arr[ran.nextInt(arr.length)];
 	}
 	
 	public static String RandomUtil(String num){
